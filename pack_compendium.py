@@ -9,6 +9,7 @@ This script analyze a foundryvtt module then pack all assets
 # Globals
 # Use MODULE_ROOT and MODULE_NAME, COMPENDIUM_NAME if no args are set
 MODULE_ROOT="modules"  # The Base directory for modules
+MODULE_NAME="npcgallery"
 MODULE_PACK_DIR="packs"
 MODULE_ASSETS_DIR="assets"
 # FOUNDRYVTT information
@@ -59,8 +60,7 @@ def copy_asset(asset,foundry_base, module_base):
     dst=module_base+"/"+MODULE_ASSETS_DIR+'/'+os.path.basename(asset)
     #print(f"copying {src} to {dst}")
     shutil.copyfile(src, dst)
-    # Il faut retourner dst - work/module ...
-    return(MODULE_ASSETS_DIR+'/'+os.path.basename(asset))
+    return(MODULE_ROOT+'/'+MODULE_NAME+'/'+MODULE_ASSETS_DIR+'/'+os.path.basename(asset))
 
 
 def main():
