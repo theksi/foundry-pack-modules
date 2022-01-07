@@ -115,3 +115,4 @@ dmypy.json
 
 # Temporary work directory
 work/
+modules/
