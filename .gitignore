@@ -116,3 +116,5 @@ dmypy.json
 # Temporary work directory
 work/
 modules/
+titi.py
+.DS_Store
