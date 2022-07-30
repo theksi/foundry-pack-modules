@@ -12,19 +12,18 @@ This script analyze a foundryvtt module then pack all assets
 
 # Globals
 # Use MODULE_ROOT and MODULE_NAME, COMPENDIUM_NAME if no args are set
-MODUKE_NAME="pfs-s03"
-MODULE_ROOT="modules"  # The Base directory for modules
-MODULE_NAME="pfs-s03"
+MODULE_ROOT="./modules"  # The Base directory for modules
+MODULE_NAME="pfs-s01"
 MODULE_PACK_DIR="packs"
 MODULE_ASSETS_DIR="assets"
 # FOUNDRYVTT information
 FOUNDRYVTT_BASE_DIR="/Users/ksi/Documents/foundryvtt/Data/"
 FOUNDRY_SRC_WORLD="pfs-prep"
-COMPENDIUM_NAME="pfs-s03-scenes.db"
-COMPENDIUM_TYPE="scenes"
+COMPENDIUM_NAME="pfs-saison1-journal.db"
+COMPENDIUM_TYPE="journal"
 def load_compendium(location):
     entries = []
-    with open(location) as openfileobject:
+    with open(location, encoding="utf-8") as openfileobject:
         for line in openfileobject:
             entries.append(json.loads(line))
     openfileobject.close()
@@ -100,9 +99,9 @@ def pack_scenes(compendium_items,foundry_base, module_base):
         packed_compendium.append(new_item)
     return packed_compendium
 def write_updated_compendium(compendium, location):
-    f=open(location,"w")
+    f=open(location,"w", encoding="utf-8")
     for item in compendium:
-        f.write(json.dumps(item)+'\n')
+        f.write(json.dumps(item,ensure_ascii=False)+'\n')
     f.close()
     print(f"Updated compendium saved to {location}")
 
@@ -132,6 +131,8 @@ def main():
     src_compendium=FOUNDRYVTT_BASE_DIR+"worlds/"+FOUNDRY_SRC_WORLD+"/packs/"+COMPENDIUM_NAME
     updated_compendium=[]
     compendium_items=load_compendium(src_compendium)
+    ## on sait que l'erreur viens après
+     #   soit via bs4, soit via urllib ? 
     generate_module_from_pack(compendium_items,COMPENDIUM_TYPE, FOUNDRYVTT_BASE_DIR, MODULE_ROOT+'/'+MODULE_NAME)
     # Ensure to create the module directory structure if doesn't exist !! 
 
