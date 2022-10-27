@@ -133,7 +133,7 @@ def main():
     compendium_items=load_compendium(src_compendium)
     ## on sait que l'erreur viens après
      #   soit via bs4, soit via urllib ? 
-    generate_module_from_pack(compendium_items,COMPENDIUM_TYPE, FOUNDRYVTT_BASE_DIR, MODULE_ROOT+'/'+MODULE_NAME)
+    updated_compendium=generate_module_from_pack(compendium_items,COMPENDIUM_TYPE, FOUNDRYVTT_BASE_DIR, MODULE_ROOT+'/'+MODULE_NAME)
     # Ensure to create the module directory structure if doesn't exist !! 
 
 
