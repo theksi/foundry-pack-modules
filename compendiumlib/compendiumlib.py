@@ -7,7 +7,7 @@ import urllib.parse
 from bs4 import BeautifulSoup as bs
 
 
-LOOKUP_KEYS=['img', 'content', 'src'] # List of key to lookup in the compendium - Other keys won't be processed
+LOOKUP_KEYS=['img', 'content', 'src', 'thumb'] # List of key to lookup in the compendium - Other keys won't be processed
 SINGLE_FILE_KEYS=['img', 'src', 'thumb'] # List keys containing images as a single string unlike content which is HTML
 # Thoses assets are located under data/systems/.... and should not be moved. the path is not explicit each time
 EXCLUDE_FILE_PATTERNS=['^icons\/*','^system\/*']
@@ -66,9 +66,11 @@ def write_compendium(compendium, location):
     print(f"Updated compendium saved to {location}")
 def pack_component(adventure, key, foundry_base, asset_base):
     if key in SINGLE_FILE_KEYS:
-        print(f"processing {key} : {adventure}")
         if item_is_included(adventure, EXCLUDE_FILE_PATTERNS):
+            print(f"processing {key} : {adventure}")
             return(copy_asset(clean_string(adventure),foundry_base, asset_base))
+        else:
+            print(f"excluding {key} : {adventure}")
     if key== 'content':
         #print(f"processing {key} : {adventure}")
         images=get_images_from_content(adventure)

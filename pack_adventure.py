@@ -26,14 +26,14 @@ def main():
     # Generate target directory tree
     target_dir=f"{MODULE_ROOT}/{MODULE_NAME}"
     assets_base=f"{target_dir}/{MODULE_ASSETS_DIR}"
-    pack_location=f"{target_dir}/{MODULE_PACK_DIR}/{MODULE_NAME}"
+    target_pack_name=f"{target_dir}/{MODULE_PACK_DIR}/{MODULE_NAME}.db"
     # Loads adventure compendium
     cl.create_target_dir(target_dir,MODULE_PACK_DIR, MODULE_ASSETS_DIR)
     src_compendium=FOUNDRYVTT_BASE_DIR+"worlds/"+FOUNDRY_SRC_WORLD+"/packs/"+COMPENDIUM_NAME
     packed_adventures=[]
     adventures=cl.load_compendium(src_compendium)
     packed_adventures=cl.generate_adventure_compendium(adventures, FOUNDRYVTT_BASE_DIR, assets_base)
-    cl.write_compendium(packed_adventures, pack_location)
+    cl.write_compendium(packed_adventures, target_pack_name)
 
 
 if __name__ == "__main__":
