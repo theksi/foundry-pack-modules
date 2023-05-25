@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup as bs
 LOOKUP_KEYS=['img', 'content', 'src', 'thumb'] # List of key to lookup in the compendium - Other keys won't be processed
 SINGLE_FILE_KEYS=['img', 'src', 'thumb'] # List keys containing images as a single string unlike content which is HTML
 # Thoses assets are located under data/systems/.... and should not be moved. the path is not explicit each time
-EXCLUDE_FILE_PATTERNS=['^icons\/*','^system\/*']
+EXCLUDE_FILE_PATTERNS=['^icons\/*','^system\/*','https']
 MAX_DEPTH=15 # the maximum recursion depth of brower_adventure_compendium()
 
 # Helper functions

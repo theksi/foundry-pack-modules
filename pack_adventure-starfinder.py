@@ -1,4 +1,3 @@
-
 from distutils.command.clean import clean
 import json
 import os
@@ -14,13 +13,13 @@ This script analyze a foundryvtt module then pack all assets
 # Globals
 # Use MODULE_ROOT and MODULE_NAME, COMPENDIUM_NAME if no args are set
 MODULE_ROOT="./modules"  # The Base directory for modules
-MODULE_NAME="pfs-s04-adventures"
+MODULE_NAME="starfinder-Bounties"
 MODULE_PACK_DIR="packs"
 MODULE_ASSETS_DIR="assets"
 # FOUNDRYVTT information
-FOUNDRYVTT_BASE_DIR="C:/Foundryvtt/data-dev/data/"
-FOUNDRY_SRC_WORLD="pfs-prep"
-COMPENDIUM_NAME="pfs-s04-adventures.db"
+FOUNDRYVTT_BASE_DIR="C:/Foundryvtt/data-dev/Data/"
+FOUNDRY_SRC_WORLD="space-station-101"
+COMPENDIUM_NAME="starfinder-Bounties.db"
 
 
 def main():
