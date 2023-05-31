@@ -74,10 +74,15 @@ def pack_component(adventure, key, foundry_base, asset_base):
     if key== 'content':
         #print(f"processing {key} : {adventure}")
         images=get_images_from_content(adventure)
-        print(images)
         for image in images:
-            new_image=copy_asset(clean_string(image['src']),foundry_base, asset_base)
-            adventure=re.sub(image['src'], new_image, adventure)
+            if image['src'] and item_is_included(image['src'],EXCLUDE_FILE_PATTERNS ):
+                print(f"{image['src']} will be processed")
+                new_image=copy_asset(clean_string(image['src']),foundry_base, asset_base)
+                adventure=re.sub(image['src'], new_image, adventure)                
+            else:
+                print(f"{image['src']} will be skipped (NULL or excluded)")
+
+            
     return(adventure)
 def browse_adventure_compendium(adventure, depth, foundry_base, asset_base):
     # print(f"browse_adventure_compendium current depth= {depth}")
